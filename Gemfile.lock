@@ -58,7 +58,7 @@ DEPENDENCIES
   bundler (~> 2.0)
   minitest (~> 5.0)
   rake (~> 13.0)
-  rubocop
+  rubocop (~> 0.76)
   rubocop-minitest
   rubocop-performance
   sens_sms!
