@@ -1,0 +1,45 @@
+AllCops:
+  TargetRubyVersion: 2.6.5
+  Exclude:
+    - Rakefile
+    - config.ru
+    - db/schema.rb
+    - bin/*
+require:
+  - rubocop-minitest
+  - rubocop-performance
+Metrics/LineLength:
+  Max: 120
+Documentation:
+  Enabled: false
+# The guiding principle of classes is SRP, SRP can't be accurately measured by LoC
+Metrics/ClassLength:
+  Max: 1500
+# Too short methods lead to extraction of single-use methods, which can make
+# the code easier to read (by naming things), but can also clutter the class
+Metrics/MethodLength:
+  Max: 20
+Metrics/BlockLength:
+  Exclude:
+    - test/**/*
+Style/CommentAnnotation:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Exclude:
+    - test/test_helper.rb
+# We do not need to support Ruby 1.9, so this is good to use.
+Style/SymbolArray:
+  Enabled: true
+Style/AsciiComments:
+  Enabled: false
+# Freeze is so earlier thing
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/GlobalVars:
+  AllowedVariables:
+    - $redis
+# Fix Rainbow Gem
+# https://github.com/rubocop-hq/rubocop/issues/6398#issuecomment-431901995
+inherit_mode:
+  merge:
+    - Exclude

@@ -1,4 +1,4 @@
-require "sens_sms/version"
+require 'sens_sms/version'
 
 module SensSms
   class Error < StandardError; end
