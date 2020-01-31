@@ -8,11 +8,6 @@ AllCops:
 require:
   - rubocop-minitest
   - rubocop-performance
-Metrics/LineLength:
-  Max: 120
-Documentation:
-  Enabled: false
-# The guiding principle of classes is SRP, SRP can't be accurately measured by LoC
 Metrics/ClassLength:
   Max: 1500
 # Too short methods lead to extraction of single-use methods, which can make
@@ -35,9 +30,10 @@ Style/AsciiComments:
 # Freeze is so earlier thing
 Style/FrozenStringLiteralComment:
   Enabled: false
-Style/GlobalVars:
-  AllowedVariables:
-    - $redis
+Style/Documentation:
+  Enabled: false
+Layout/LineLength:
+  Max: 120
 # Fix Rainbow Gem
 # https://github.com/rubocop-hq/rubocop/issues/6398#issuecomment-431901995
 inherit_mode:
