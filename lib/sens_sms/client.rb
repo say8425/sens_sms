@@ -2,6 +2,10 @@ module SensSms
   class Client
     attr_reader :response, :status, :errors, :request_time, :timestamp
 
+    def initialize
+      raise 'Configure is not valid.' if validate_configure
+    end
+
     def deliver(type:, from_number:, to_numbers:, subject: nil, message:)
       raise "Invalid message type: #{type}" unless %i[sms lms].include? type.to_sym
 
@@ -28,6 +32,12 @@ module SensSms
     private
 
     include Configuration
+
+    def validate_configure
+      (!self.class.class_variable_defined?(:@@access_key) || self.class.class_variable_get(:@@access_key).nil?) &&
+        (!self.class.class_variable_defined?(:@@service_id) || self.class.class_variable_get(:@@service_id).nil?) &&
+        (!self.class.class_variable_defined?(:@@secret_key) || self.class.class_variable_get(:@@secret_key).nil?)
+    end
 
     def parse_response
       if status.success?
