@@ -20,14 +20,14 @@ module SensSms
     end
 
     def self.configure(access_key:, service_id:, secret_key:)
-      @access_key = access_key
-      @service_id = service_id
-      @secret_key = secret_key
+      @@access_key = access_key
+      @@service_id = service_id
+      @@secret_key = secret_key
     end
 
     private
 
-    attr_reader :access_key, :service_id, :secret_key
+    include Configuration
 
     def parse_response
       if status.success?
