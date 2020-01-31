@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class SensSmsTest < Minitest::Test
-  def test_send_sms
+  def test_success_send_sms
     SensSms::Client.configure(access_key: ENV['access_key'],
                               secret_key: ENV['secret_key'],
                               service_id: ENV['service_id'])
