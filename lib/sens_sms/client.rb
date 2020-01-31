@@ -3,32 +3,12 @@ module SensSms
     attr_reader :response, :status, :errors, :request_time, :timestamp
 
     def deliver(type:, from_number:, to_numbers:, subject: nil, message:)
-      case type.to_sym
-      when :sms then post_sms(from_number: from_number, to_numbers: to_numbers, message: message)
-      when :lms then post_lms(from_number: from_number, to_numbers: to_numbers, subject: subject, message: message)
-      else raise "Invalid message type: #{type}"
-      end
-    end
+      raise "Invalid message type: #{type}" unless %i[sms lms].include? type.to_sym
 
-    def post_sms(from_number:, to_numbers:, message:)
       @timestamp = current_timestamp
       @response = HTTP.headers(ncloud_sens_api_header)
                       .post(ncloud_sens_api_url,
-                            json: { type: :SMS,
-                                    contentType: :COMM,
-                                    countryCode: '82',
-                                    from: from_number,
-                                    content: message,
-                                    messages: parsed_messages(to_numbers) })
-      @status = response.status
-      parse_response
-    end
-
-    def post_lms(from_number:, to_numbers:, subject:, message:)
-      @timestamp = current_timestamp
-      @response = HTTP.headers(ncloud_sens_api_header)
-                      .post(ncloud_sens_api_url,
-                            json: { type: :LMS,
+                            json: { type: type.to_sym,
                                     contentType: :COMM,
                                     countryCode: '82',
                                     from: from_number,
@@ -40,14 +20,14 @@ module SensSms
     end
 
     def self.configure(access_key:, service_id:, secret_key:)
-      @@access_key = access_key
-      @@service_id = service_id
-      @@secret_key = secret_key
+      @access_key = access_key
+      @service_id = service_id
+      @secret_key = secret_key
     end
 
     private
 
-    include Configuration
+    attr_reader :access_key, :service_id, :secret_key
 
     def parse_response
       if status.success?
