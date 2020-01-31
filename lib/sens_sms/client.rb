@@ -47,6 +47,8 @@ module SensSms
 
     private
 
+    include Configuration
+
     def parse_response
       if status.success?
         @request_time = Time.parse(response.parse['requestTime'])
@@ -85,18 +87,6 @@ module SensSms
 
     def parsed_messages(to_numbers)
       Array(to_numbers).map { |to_number| { to: to_number } }
-    end
-
-    def access_key
-      @@access_key
-    end
-
-    def secret_key
-      @@secret_key
-    end
-
-    def service_id
-      @@service_id
     end
   end
 end
