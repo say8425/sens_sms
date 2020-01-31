@@ -6,6 +6,7 @@ source 'https://rubygems.org'
 gemspec
 
 group :development, :test do
+  gem 'dotenv'
   gem 'rubocop-minitest'
   gem 'rubocop-performance'
 end
