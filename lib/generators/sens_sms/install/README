@@ -1,0 +1,6 @@
+Description:
+    Sets up Ncloud Sens SMS in your project.
+Examples:
+    `rails generate sens_sms:install`
+
+    `rails generate sens_sms:install --help`
