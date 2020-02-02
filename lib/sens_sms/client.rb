@@ -23,10 +23,15 @@ module SensSms
       parse_response
     end
 
-    def self.configure(access_key:, service_id:, secret_key:)
-      @@access_key = access_key
-      @@service_id = service_id
-      @@secret_key = secret_key
+    def self.configure
+      yield configuration
+      @@access_key = @configuration.access_key
+      @@service_id = @configuration.service_id
+      @@secret_key = @configuration.secret_key
+    end
+
+    def self.configuration
+      @configuration ||= SensSms::Configure.new
     end
 
     private

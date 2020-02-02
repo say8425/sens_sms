@@ -8,9 +8,11 @@ class SensSmsTest < Minitest::Test
   end
 
   def test_send_sms_success
-    SensSms::Client.configure(access_key: ENV['access_key'],
-                              secret_key: ENV['secret_key'],
-                              service_id: ENV['service_id'])
+    SensSms::Client.configure do |config|
+      config.access_key = ENV['access_key']
+      config.secret_key = ENV['secret_key']
+      config.service_id = ENV['service_id']
+    end
     sens_sms = SensSms::Client.new
     assert(sens_sms.deliver(type: :sms,
                             from_number: ENV['from_number'],
@@ -19,9 +21,11 @@ class SensSmsTest < Minitest::Test
   end
 
   def test_send_sms_fail
-    SensSms::Client.configure(access_key: 'no_access_key',
-                              secret_key: ENV['secret_key'],
-                              service_id: ENV['service_id'])
+    SensSms::Client.configure do |config|
+      config.access_key = 'no_access_key'
+      config.secret_key = ENV['secret_key']
+      config.service_id = ENV['service_id']
+    end
     sens_sms = SensSms::Client.new
     refute(sens_sms.deliver(type: :sms,
                             from_number: ENV['from_number'],
@@ -30,9 +34,11 @@ class SensSmsTest < Minitest::Test
   end
 
   def test_send_lms_success
-    SensSms::Client.configure(access_key: ENV['access_key'],
-                              secret_key: ENV['secret_key'],
-                              service_id: ENV['service_id'])
+    SensSms::Client.configure do |config|
+      config.access_key = ENV['access_key']
+      config.secret_key = ENV['secret_key']
+      config.service_id = ENV['service_id']
+    end
     sens_sms = SensSms::Client.new
     assert(sens_sms.deliver(type: :lms,
                             from_number: ENV['from_number'],
@@ -49,9 +55,11 @@ class SensSmsTest < Minitest::Test
   end
 
   def test_send_lms_fail
-    SensSms::Client.configure(access_key: 'no_access_key',
-                              secret_key: ENV['secret_key'],
-                              service_id: ENV['service_id'])
+    SensSms::Client.configure do |config|
+      config.access_key = 'no_access_key'
+      config.secret_key = ENV['secret_key']
+      config.service_id = ENV['service_id']
+    end
     sens_sms = SensSms::Client.new
     refute(sens_sms.deliver(type: :lms,
                             from_number: ENV['from_number'],
