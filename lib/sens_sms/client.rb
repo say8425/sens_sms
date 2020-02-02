@@ -32,12 +32,7 @@ module SensSms
     private
 
     include Configuration
-
-    def validate_configure
-      self.class.class_variable_defined?(:@@access_key) &&
-        self.class.class_variable_defined?(:@@service_id) &&
-        self.class.class_variable_defined?(:@@secret_key)
-    end
+    include Configuration::Validate
 
     def parse_response
       if status.success?
