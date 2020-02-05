@@ -3,14 +3,15 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'sens_sms/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'sens_sms'
-  spec.version       = SensSms::VERSION
-  spec.authors       = 'Penguin'
-  spec.email         = 'say8425@gmail.com'
-  spec.summary       = 'Sens SMS by Ncloud Sens'
-  spec.description   = 'The gem is a wrapper for Ncloud Sens SMS.'
-  spec.homepage      = 'https://github.com/say8425/sens_sms'
-  spec.license       = 'MIT'
+  spec.name                   = 'sens_sms'
+  spec.version                = SensSms::VERSION
+  spec.authors                = 'Penguin'
+  spec.email                  = 'say8425@gmail.com'
+  spec.summary                = 'Sens SMS by Ncloud Sens'
+  spec.description            = 'The gem is a wrapper for Ncloud Sens SMS.'
+  spec.homepage               = 'https://github.com/say8425/sens_sms'
+  spec.license                = 'MIT'
+  spec.required_ruby_version  = '>= 2.4'
 
   spec.metadata['homepage_uri']      = spec.homepage
   spec.metadata['source_code_uri']   = 'https://github.com/say8425/sens_sms'
