@@ -28,7 +28,7 @@ jobs:
           bundle install --jobs 4 --retry 3
   Rubocop:
     runs-on: ubuntu-latest
-    needs: cache_bundler
+    needs: CacheBundler
     strategy:
       matrix:
         ruby: [2.4.x, 2.5.x, 2.6.x, 2.7.x]
@@ -55,7 +55,7 @@ jobs:
         run: bundle exec rubocop
   Fasterer:
     runs-on: ubuntu-latest
-    needs: cache_bundler
+    needs: CacheBundler
     strategy:
       matrix:
         ruby: [2.4.x, 2.5.x, 2.6.x, 2.7.x]
@@ -82,7 +82,7 @@ jobs:
         run: bundle exec fasterer
   Minitest:
     runs-on: ubuntu-latest
-    needs: cache_bundler
+    needs: CacheBundler
     strategy:
       matrix:
         ruby: [2.4.x, 2.5.x, 2.6.x, 2.7.x]
