@@ -9,40 +9,40 @@ class SensSmsTest < Minitest::Test
 
   def test_send_sms_success
     SensSms::Client.configure do |config|
-      config.access_key = ENV['access_key']
-      config.secret_key = ENV['secret_key']
-      config.service_id = ENV['service_id']
+      config.access_key = ENV['NCLOUD_ACCESS_KEY']
+      config.secret_key = ENV['NCLOUD_SECRET_KEY']
+      config.service_id = ENV['NCLOUD_SERVICE_ID']
     end
     sens_sms = SensSms::Client.new
     assert(sens_sms.deliver(type: :sms,
-                            from_number: ENV['from_number'],
-                            to_numbers: ENV['to_number'],
+                            from_number: ENV['FROM_NUMBER'],
+                            to_numbers: ENV['TO_NUMBER'],
                             message: '키스의 고유 조건은 입술끼리 만나야 하고 특별한 기술은 필요치 않다.'))
   end
 
   def test_send_sms_fail
     SensSms::Client.configure do |config|
       config.access_key = 'no_access_key'
-      config.secret_key = ENV['secret_key']
-      config.service_id = ENV['service_id']
+      config.secret_key = ENV['NCLOUD_SECRET_KEY']
+      config.service_id = ENV['NCLOUD_SERVICE_ID']
     end
     sens_sms = SensSms::Client.new
     refute(sens_sms.deliver(type: :sms,
-                            from_number: ENV['from_number'],
-                            to_numbers: ENV['to_number'],
+                            from_number: ENV['FROM_NUMBER'],
+                            to_numbers: ENV['TO_NUMBER'],
                             message: '키스의 고유 조건은 입술끼리 만나야 하고 특별한 기술은 필요치 않다.'))
   end
 
   def test_send_lms_success
     SensSms::Client.configure do |config|
-      config.access_key = ENV['access_key']
-      config.secret_key = ENV['secret_key']
-      config.service_id = ENV['service_id']
+      config.access_key = ENV['NCLOUD_ACCESS_KEY']
+      config.secret_key = ENV['NCLOUD_SECRET_KEY']
+      config.service_id = ENV['NCLOUD_SERVICE_ID']
     end
     sens_sms = SensSms::Client.new
     assert(sens_sms.deliver(type: :lms,
-                            from_number: ENV['from_number'],
-                            to_numbers: ENV['to_number'],
+                            from_number: ENV['FROM_NUMBER'],
+                            to_numbers: ENV['TO_NUMBER'],
                             subject: '펭귄',
                             message: '전 세계에 알려진 펭귄의 종류는 17종 혹은 18종이다. (쇠푸른펭귄과 흰날개펭귄이
                                       식별되는지 아닌지에 따라 달라진다.) 모든 펭귄 종의 고향이 남반구이기는 하지만,
@@ -57,13 +57,13 @@ class SensSmsTest < Minitest::Test
   def test_send_lms_fail
     SensSms::Client.configure do |config|
       config.access_key = 'no_access_key'
-      config.secret_key = ENV['secret_key']
-      config.service_id = ENV['service_id']
+      config.secret_key = ENV['NCLOUD_SECRET_KEY']
+      config.service_id = ENV['NCLOUD_SERVICE_ID']
     end
     sens_sms = SensSms::Client.new
     refute(sens_sms.deliver(type: :lms,
-                            from_number: ENV['from_number'],
-                            to_numbers: ENV['to_number'],
+                            from_number: ENV['FROM_NUMBER'],
+                            to_numbers: ENV['TO_NUMBER'],
                             subject: '펭귄',
                             message: '전 세계에 알려진 펭귄의 종류는 17종 혹은 18종이다. (쇠푸른펭귄과 흰날개펭귄이
                                       식별되는지 아닌지에 따라 달라진다.) 모든 펭귄 종의 고향이 남반구이기는 하지만,
