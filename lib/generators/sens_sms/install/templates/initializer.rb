@@ -1,7 +1,7 @@
 require 'sens_sms'
 
 SensSms::Client.configure do |config|
-  config.access_key = ENV['sens_sms_access_key']
-  config.secret_key = ENV['sens_sms_secret_key']
-  config.service_id = ENV['sens_sms_service_id']
+  config.access_key = ENV['NCLOUD_ACCESS_KEY']
+  config.secret_key = ENV['NCLOUD_SECRET_KEY']
+  config.service_id = ENV['NCLOUD_SERVICE_ID']
 end
