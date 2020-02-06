@@ -15,7 +15,9 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
       - name: Bundler Install
-        run: bundle install --jobs 4 --retry 3
+        run: |
+          gem install bundler --no-document
+          bundle install --jobs 4 --retry 3
       - name: Run RuboCop
         run: bundle exec rubocop
   Fasterer:
@@ -31,7 +33,9 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
       - name: Bundler Install
-        run: bundle install --jobs 4 --retry 3
+        run: |
+          gem install bundler --no-document
+          bundle install --jobs 4 --retry 3
       - name: Run Fasterer
         run: bundle exec fasterer
   Minitest:
@@ -47,6 +51,8 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
       - name: Bundler Install
-        run: bundle install --jobs 4 --retry 3
+        run: |
+          gem install bundler --no-document
+          bundle install --jobs 4 --retry 3
       - name: Run Minitest
         run: ruby -Ilib:test test/sens_sms_test.rb
