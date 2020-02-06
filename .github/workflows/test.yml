@@ -56,3 +56,9 @@ jobs:
           bundle install --jobs 4 --retry 3
       - name: Run Minitest
         run: ruby -Ilib:test test/sens_sms_test.rb
+        env:
+          NCLOUD_ACCESS_KEY: ${{ NCLOUD_ACCESS_KEY }}
+          NCLOUD_SECRET_KEY: ${{ NCLOUD_SECRET_KEY }}
+          NCLOUD_SERVICE_ID: ${{ NCLOUD_SERVICE_ID }}
+          FROM_NUMBER: ${{ FROM_NUMBER }}
+          TO_NUMBER: ${{ TO_NUMBER }}
