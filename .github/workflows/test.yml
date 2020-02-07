@@ -55,7 +55,7 @@ jobs:
           gem install bundler --no-document
           bundle install --jobs 4 --retry 3
       - name: Run Minitest
-        run: ruby -Ilib:test test/sens_sms_test.rb
+        run: ruby -Ilib -e 'ARGV.each { |f| require f }' ./test/test*.rb
         env:
           NCLOUD_ACCESS_KEY: ${{ secrets.NCLOUD_ACCESS_KEY }}
           NCLOUD_SECRET_KEY: ${{ secrets.NCLOUD_SECRET_KEY }}
