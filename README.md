@@ -1,9 +1,9 @@
 # Ncloud Sens SMS Gem
 
 [![gem version](https://img.shields.io/gem/v/sens_sms?color=cc342d&logo=ruby&logoColor=cc342d)](https://rubygems.org/gems/sens_sms)
-[![GitHub Actions Test](https://github.com/say8425/ncloud_sens_sms/workflows/Test/badge.svg)](https://github.com/say8425/ncloud_sens_sms/actions?query=workflow%3ATest)
-[![GitHub Actions Release](https://github.com/say8425/ncloud_sens_sms/workflows/Release/badge.svg)](https://github.com/say8425/ncloud_sens_sms/actions?query=workflow%3ARelease)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/say8425/ncloud_sens_sms/blob/master/LICENSE)
+[![GitHub Actions Test](https://github.com/say8425/sens_sms/workflows/Test/badge.svg)](https://github.com/say8425/sens_sms/actions?query=workflow%3ATest)
+[![GitHub Actions Release](https://github.com/say8425/sens_sms/workflows/Release/badge.svg)](https://github.com/say8425/sens_sms/actions?query=workflow%3ARelease)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/say8425/sens_sms/blob/master/LICENSE)
 
 
 Send your SMS with Ncloud Sens.
