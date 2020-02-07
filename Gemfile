@@ -7,6 +7,7 @@ gemspec
 
 group :development, :test do
   gem 'dotenv'
+  gem 'minitest-reporters'
   gem 'rubocop-minitest'
   gem 'rubocop-performance'
 end
