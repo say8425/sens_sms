@@ -1,4 +1,12 @@
 class TestLmsSensSms < Minitest::Test
+  def teardown
+    return unless SensSms::Client.class_variable_defined? :@@access_key
+
+    SensSms::Client.remove_class_variable :@@access_key
+    SensSms::Client.remove_class_variable :@@service_id
+    SensSms::Client.remove_class_variable :@@secret_key
+  end
+
   def test_send_lms_success
     SensSms::Client.configure do |config|
       config.access_key = ENV['NCLOUD_ACCESS_KEY']
