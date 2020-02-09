@@ -5,33 +5,33 @@
 [![GitHub Actions Release](https://github.com/say8425/sens_sms/workflows/Release/badge.svg)](https://github.com/say8425/sens_sms/actions?query=workflow%3ARelease)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/say8425/sens_sms/blob/master/LICENSE)
 
-[Ncloud Sens](https://www.ncloud.com/product/applicationService/sens) SMS를 Ruby에서 보내세요.
+Send your SMS with [Ncloud Sens](https://www.ncloud.com/product/applicationService/sens) in Ruby.
 
-If you want to read English document, then click [here](https://github.com/say8425/sens_sms/blob/master/README.en.md).
+한국어 문서를 읽고싶다면, [여기](https://github.com/say8425/sens_sms/blob/master/README.ko.md)를 클릭하세요
 
 ## Installation
 
 ### Rails
 
-Application's Gemfile에 아래 줄을 추가하세요:
+Add this line to your application's Gemfile:
 
 ```ruby
 gem 'sens_sms'
 ```
 
-그 다음 아래 명령을 실행하세요:
+Then execute:
 
 ```shell script
 $ bundle
 ```
 
-마지막으로 generator을 실행하세요:
+Finally, run the generator:
 
 ```shell script
 $ rails generate sens_sms:install
 ```
 
-여기까지 하셨으면, sens_sms configuration 파일을 `YOUR_PROJECT/config/initializers/sens_sms.rb`에서 볼 수 있습니다.
+At this point, you can find a sens_sms configuration file located at `YOUR_PROJECT/config/initializers/sens_sms.rb`.
 
 ```ruby
 require 'sens_sms'
@@ -43,18 +43,20 @@ SensSms::Client.configure do |config|
 end
 ```
 
-Ncloud access key를 여기에 직접 세팅할 수 있습니다. 하지만 환경변수 사용을 권장할게요.
-access key 발급하는 방법은 [여기](https://docs.ncloud.com/ko/sens/sens-1-2.html)에서 볼 수 있습니다.
+You can set your Ncloud access keys here, but we recommend to use Environment Values.
+Generating access keys guide is [here](https://docs.ncloud.com/en/sens/sens-1-2.html).
 
 ### Sinatra or Plain ol' Ruby
 
-gem을 설치하세요:
+Install the gem:
 
 ```shell script
 $ gem install sens_sms
 ```
 
-plain Ruby 프로젝트에서 sens_sms gem을 쓰실거라면, rails generator 가 해준 것처럼 `require 'sens_sms'` 과 `SensSms::Client.configure` block 을 호출해서 access keys를 꼭 세팅하고, `deliver`함수를 쓰세요.
+If you plan to use sens_sms gem in plain Ruby project,
+then you should call `require 'sens_sms'` and `SensSms::Client.configure` block
+to set access keys before calling `deliver` method like rails generator do it.
 
 ## Usage
 
@@ -84,45 +86,42 @@ SensSms::Client.new
                                   추운 지방에 살고, 작은 펭귄들은 온대나 심지어 열대에서 발견된다.')
 ```
 
-`SensSms::Client.new.deliver` 함수를 아래 argument 들과 함께 호출하면 됩니다.
+After calling configure method, use `SensSms::Client.new.deliver` with below arguments.
 
 ### From Number
 
-`from_number` key로 [Ncloud SENS 콘솔에 등록된](https://docs.ncloud.com/ko/sens/sens-1-3.html#register-view-caller-id) 발신자 번호를 설정 할 수 있습니다.
+You can use `from_number` key to set sender number [registered at Ncloud SENS console](https://docs.ncloud.com/en/sens/sens-1-3.html#register-view-caller-id).
 
 ### To Number
 
-`to_numbers` key로 수신자 번호를 설정 할 수 있습니다.
-
-```ruby
-to_numbers: ['01012345678', '01009876543']
-```
-
-또한 `to_numbers` key는 Array type 으로 여러 번호를 지정할 수 있습니다. (예. `numbers: ['01012345678', '01009876543']` )
+You can use `to_numbers` key to set receiver number.
+Also `to_numbers` can be set multiple numbers with Array type. (eg. `['01012345678', '01009876543']` )
 
 ### Type
 
-`type` key로 메시지 타입을 정할 수 있습니다.
+You can use `type` key to choose message type.
 
-#### [SMS Type](https://docs.ncloud.com/ko/sens/sens-1-3.html#send-sms-messages)
+#### [SMS Type](https://docs.ncloud.com/en/sens/sens-1-3.html#send-sms-messages)
 
-SMS는 제목을 쓸 수 없고, 80바이트로 제한되는 짧은 메시지를 보낼 수 있습니다.
+SMS can send short message with up to 80 bytes and this type cannot use title.
+However, sending title key will do not raise any error, it'll be just ignored.
 
-#### [LMS Type](https://docs.ncloud.com/ko/sens/sens-1-3.html#send-lms-messages)
+#### [LMS Type](https://docs.ncloud.com/en/sens/sens-1-3.html#send-lms-messages)
 
-LMS는 제목을 쓸 수 있고, 2,000바이트로 제한되는 긴 메시지를 보낼 수 있습니다.
+LMS type can send title and super long text message with up to 2,000 bytes.
 
 ### Title
 
-기본적으로 이 key는 optional이며, LMS 메시지에서 제목용도로 쓰입니다. 물론 SMS 타입에서 쓸 수 있지만, 아무일도 생기지 않을 것입니다.
+Basically, This key is optional used by LMS message type for title.
+Of course, this key can be used in SMS message type, but nothing will be happened.
 
 ### Message
 
-텍스트 메시지입니다.
+Text message.
 
 ## Contributing
 
-버그 리포트와 풀리퀘스는 환영입니다.
+Bug reports and pull requests are welcome.
 
 ## License
 

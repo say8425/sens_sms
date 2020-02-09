@@ -84,7 +84,7 @@ SensSms::Client.new
                                   추운 지방에 살고, 작은 펭귄들은 온대나 심지어 열대에서 발견된다.')
 ```
 
-`SensSms::Client.new.deliver` 함수를 아래 argument 들과 함께 호출하면 됩니다.
+`SensSms::Client.new.deliver` 함수를 아래 argument 들과 함께 위와 같이 호출하면 됩니다.
 
 ### From Number
 
@@ -92,13 +92,8 @@ SensSms::Client.new
 
 ### To Number
 
-`to_numbers` key로 수신자 번호를 설정 할 수 있습니다.
-
-```ruby
-to_numbers: ['01012345678', '01009876543']
-```
-
-또한 `to_numbers` key는 Array type 으로 여러 번호를 지정할 수 있습니다. (예. `numbers: ['01012345678', '01009876543']` )
+`to_numbers` key로 수신자 번호를 설정 할 수 있습니다. 
+또한 `to_numbers` key는 Array type으로 여러 번호를 지정 할 수 있습니다. (예. `numbers: ['01012345678', '01009876543']` )
 
 ### Type
 
@@ -114,7 +109,7 @@ LMS는 제목을 쓸 수 있고, 2,000바이트로 제한되는 긴 메시지를
 
 ### Title
 
-기본적으로 이 key는 optional이며, LMS 메시지에서 제목용도로 쓰입니다. 물론 SMS 타입에서 쓸 수 있지만, 아무일도 생기지 않을 것입니다.
+기본적으로 이 key는 optional이며, LMS 메시지에서 제목 용도로 쓰입니다. 물론 SMS 타입에서 쓸 수 있지만, 아무일도 생기지 않을 것입니다.
 
 ### Message
 
