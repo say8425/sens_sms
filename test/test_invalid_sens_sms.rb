@@ -1,3 +1,5 @@
+require 'test_helper'
+
 class TestInvalidSensSms < Minitest::Test
   def teardown
     return unless SensSms::Client.class_variable_defined? :@@access_key
