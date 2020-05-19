@@ -31,7 +31,7 @@ $ bundle
 $ rails generate sens_sms:install
 ```
 
-여기까지 하셨으면, sens_sms configuration 파일을 `YOUR_PROJECT/config/initializers/sens_sms.rb`에서 볼 수 있습니다.
+여기까지 하셨으면, sens_sms를 설정할 수 있는 `YOUR_PROJECT/config/initializers/sens_sms.rb` 파일이 추가된 것을 확인하실 수 있습니다.
 
 ```ruby
 require 'sens_sms'
@@ -43,8 +43,8 @@ SensSms::Client.configure do |config|
 end
 ```
 
-Ncloud access key를 여기에 직접 세팅할 수 있습니다. 하지만 환경변수 사용을 권장할게요.
-access key 발급하는 방법은 [여기](https://docs.ncloud.com/ko/sens/sens-1-2.html)에서 볼 수 있습니다.
+이 파일에서 Ncloud access key를 직접 설정 할 수 있습니다. 하지만 환경변수를 통해 설정하실 것을 권장합니다.
+Ncloud access key 를 발급하는 방법은 [여기](https://docs.ncloud.com/ko/sens/sens-1-2.html)에서 확인 하실 수 있습니다.
 
 ### Sinatra or Plain ol' Ruby
 
@@ -54,7 +54,7 @@ gem을 설치하세요:
 $ gem install sens_sms
 ```
 
-plain Ruby 프로젝트에서 sens_sms gem을 쓰실거라면, rails generator 가 해준 것처럼 `require 'sens_sms'` 과 `SensSms::Client.configure` block 을 호출해서 access keys를 꼭 세팅하고, `deliver`함수를 쓰세요.
+rails generator 가 생성해준 설정 파일 처럼, `require 'sens_sms'` 과 `SensSms::Client.configure` block 을 호출해서 access keys를 세팅하세요.
 
 ## Usage
 
